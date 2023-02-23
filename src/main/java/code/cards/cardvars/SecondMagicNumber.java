@@ -4,7 +4,7 @@ import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import code.cards.AbstractEasyCard;
 
-import static code.ModFile.makeID;
+import static code.SpyMod.makeID;
 
 public class SecondMagicNumber extends DynamicVariable {
 

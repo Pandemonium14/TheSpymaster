@@ -24,10 +24,10 @@ import code.relics.TodoItem;
 
 import java.util.ArrayList;
 
-import static code.CharacterFile.Enums.TODO_COLOR;
-import static code.ModFile.*;
+import static code.TheSpymaster.Enums.TODO_COLOR;
+import static code.SpyMod.*;
 
-public class CharacterFile extends CustomPlayer {
+public class TheSpymaster extends CustomPlayer {
 
     static final String ID = makeID("ModdedCharacter");
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
@@ -35,7 +35,7 @@ public class CharacterFile extends CustomPlayer {
     static final String[] TEXT = characterStrings.TEXT;
 
 
-    public CharacterFile(String name, PlayerClass setClass) {
+    public TheSpymaster(String name, PlayerClass setClass) {
         super(name, setClass, new CustomEnergyOrb(orbTextures, modID + "Resources/images/char/mainChar/orb/vfx.png", null), new SpriterAnimation(
                 modID + "Resources/images/char/mainChar/static.scml"));
         initializeClass(null,
@@ -137,7 +137,7 @@ public class CharacterFile extends CustomPlayer {
 
     @Override
     public AbstractPlayer newInstance() {
-        return new CharacterFile(name, chosenClass);
+        return new TheSpymaster(name, chosenClass);
     }
 
     @Override
