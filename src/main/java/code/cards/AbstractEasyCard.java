@@ -225,4 +225,8 @@ public abstract class AbstractEasyCard extends CustomCard {
     protected void upSecondDamage(int x) {
         upgradeSecondDamage(x);
     }
+
+    public void onSeenByScouting() {}
+    public void onScouted() {}
+    public void triggerRigs() {}
 }

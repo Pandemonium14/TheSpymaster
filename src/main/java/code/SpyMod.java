@@ -32,7 +32,7 @@ public class SpyMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber {
 
-    public static final String modID = "spymod"; //TODO: Change this.
+    public static final String modID = "spymod";
 
     public static String makeID(String idText) {
         return modID + ":" + idText;
