@@ -169,12 +169,11 @@ public class TheSpymaster extends CustomPlayer {
     }
 
     public static class Enums {
-        //TODO: Change these.
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_TODO;
-        @SpireEnum(name = "TODO_COLOR")
+        public static AbstractPlayer.PlayerClass THE_SPYMASTER;
+        @SpireEnum(name = "SPY_COLOR")
         public static AbstractCard.CardColor TODO_COLOR;
-        @SpireEnum(name = "TODO_COLOR")
+        @SpireEnum(name = "SPY_COLOR")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }

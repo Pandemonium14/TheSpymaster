@@ -1,7 +1,10 @@
 package code.cards;
 
+import code.actions.RigRandomCardsAction;
 import code.actions.ScoutAction;
+import code.cardmods.rigs.BombRig;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static code.SpyMod.makeID;
@@ -14,12 +17,12 @@ public class TestCard extends AbstractEasyCard {
         super(ID, 0, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
         magicNumber = baseMagicNumber = 4;
         name = "TestCard";
-        rawDescription = "Scout !M!.";
+        rawDescription = "spymod:Rig 3 random cards in hand : Deal !M! damage to ALL enemies.";
         initializeDescription();
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ScoutAction(magicNumber));
+        addToBot(new RigRandomCardsAction(new BombRig(magicNumber),3, AbstractDungeon.player.hand));
     }
 
     public void upp() {

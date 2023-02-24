@@ -11,14 +11,11 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import code.cards.AbstractEasyCard;
-import code.cards.cardvars.SecondDamage;
-import code.cards.cardvars.SecondMagicNumber;
+import code.cards.protemplatestuff.cardvars.SecondDamage;
+import code.cards.protemplatestuff.cardvars.SecondMagicNumber;
 import code.relics.AbstractEasyRelic;
 
 import java.nio.charset.StandardCharsets;
@@ -104,8 +101,8 @@ public class SpyMod implements
 
     @Override
     public void receiveEditCharacters() {
-        BaseMod.addCharacter(new TheSpymaster(TheSpymaster.characterStrings.NAMES[1], TheSpymaster.Enums.THE_TODO),
-                CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, TheSpymaster.Enums.THE_TODO);
+        BaseMod.addCharacter(new TheSpymaster(TheSpymaster.characterStrings.NAMES[1], TheSpymaster.Enums.THE_SPYMASTER),
+                CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, TheSpymaster.Enums.THE_SPYMASTER);
     }
 
     @Override
@@ -144,6 +141,8 @@ public class SpyMod implements
         BaseMod.loadCustomStringsFile(CharacterStrings.class, modID + "Resources/localization/" + getLangString() + "/Charstrings.json");
 
         BaseMod.loadCustomStringsFile(PowerStrings.class, modID + "Resources/localization/" + getLangString() + "/Powerstrings.json");
+
+        BaseMod.loadCustomStringsFile(UIStrings.class, modID + "Resources/localization/" + getLangString() + "/UIStrings.json");
     }
 
     @Override

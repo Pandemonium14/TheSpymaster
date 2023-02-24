@@ -1,4 +1,4 @@
-package code.cards.democards.simple;
+package code.cards.protemplatestuff.democards.simple;
 
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

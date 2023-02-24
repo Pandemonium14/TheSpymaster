@@ -1,4 +1,4 @@
-package code.cards.cardvars;
+package code.cards.protemplatestuff.cardvars;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -6,39 +6,39 @@ import code.cards.AbstractEasyCard;
 
 import static code.SpyMod.makeID;
 
-public class SecondMagicNumber extends DynamicVariable {
+public class SecondDamage extends DynamicVariable {
 
     @Override
     public String key() {
-        return makeID("m2");
+        return makeID("sd");
     }
 
     @Override
     public boolean isModified(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).isSecondMagicModified;
+            return ((AbstractEasyCard) card).isSecondDamageModified;
         }
         return false;
+    }
+
+    public void setIsModified(AbstractCard card, boolean v) {
+        if (card instanceof AbstractEasyCard) {
+            ((AbstractEasyCard) card).isSecondDamageModified = v;
+        }
     }
 
     @Override
     public int value(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).secondMagic;
+            return ((AbstractEasyCard) card).secondDamage;
         }
         return -1;
-    }
-
-    public void setIsModified(AbstractCard card, boolean v) {
-        if (card instanceof AbstractEasyCard) {
-            ((AbstractEasyCard) card).isSecondMagicModified = v;
-        }
     }
 
     @Override
     public int baseValue(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).baseSecondMagic;
+            return ((AbstractEasyCard) card).baseSecondDamage;
         }
         return -1;
     }
@@ -46,7 +46,7 @@ public class SecondMagicNumber extends DynamicVariable {
     @Override
     public boolean upgraded(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).upgradedSecondMagic;
+            return ((AbstractEasyCard) card).upgradedSecondDamage;
         }
         return false;
     }

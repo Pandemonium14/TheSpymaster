@@ -1,9 +1,8 @@
 package code.actions;
 
 import code.cards.AbstractEasyCard;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
+import code.patches.Enums;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.utility.DrawPileToHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
@@ -15,7 +14,8 @@ import java.util.function.Consumer;
 public class ScoutAction extends AbstractGameAction {
 
     private final CardGroup group;
-    private Consumer<AbstractCard> callback;
+    private Consumer<AbstractCard> onScoutedCallback;
+    private Consumer<AbstractCard> onSeenCallback;
     private int scoutedCards = -1;
 
     public ScoutAction(int amount, CardGroup group) {
@@ -30,7 +30,13 @@ public class ScoutAction extends AbstractGameAction {
 
     public ScoutAction(int amount, CardGroup group, Consumer<AbstractCard> callback) {
         this(amount,group);
-        this.callback = callback;
+        this.onScoutedCallback = callback;
+    }
+
+    public ScoutAction(int amount, CardGroup group, Consumer<AbstractCard> onScoutCallback, Consumer<AbstractCard> onSeenCallback) {
+        this(amount,group);
+        this.onScoutedCallback = onScoutCallback;
+        this.onSeenCallback = onSeenCallback;
     }
 
 
@@ -42,7 +48,14 @@ public class ScoutAction extends AbstractGameAction {
             for (AbstractCard c : group.group) {
                 tmp.addToTop(c);
             }
+
             CardGroup cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+
+            AbstractCard[] baits = tmp.group.stream().filter((c) -> c.hasTag(Enums.SPY_BAIT)).toArray(AbstractCard[]::new);
+            if (baits.length>0) {
+                cards.addToTop(baits[AbstractDungeon.cardRandomRng.random(baits.length - 1)]);
+            }
+
             while (cards.size() < amount && tmp.size() > 0) {
                 AbstractCard c = tmp.getRandomCard(AbstractDungeon.cardRandomRng);
                 cards.addToRandomSpot(c);
@@ -57,13 +70,14 @@ public class ScoutAction extends AbstractGameAction {
                     if (c instanceof AbstractEasyCard) {
                         ((AbstractEasyCard)c).onSeenByScouting();
                     }
+                    if (onSeenCallback != null) onSeenCallback.accept(c);
                 }
                 tickDuration();
             }
         } else {
             ArrayList<AbstractCard> chosenCards = AbstractDungeon.gridSelectScreen.selectedCards;
             for (AbstractCard c : chosenCards) {
-                if (callback != null) callback.accept(c);
+                if (onScoutedCallback != null) onScoutedCallback.accept(c);
                 if (c instanceof AbstractEasyCard) {
                     ((AbstractEasyCard)c).onScouted();
                     ((AbstractEasyCard)c).triggerRigs();

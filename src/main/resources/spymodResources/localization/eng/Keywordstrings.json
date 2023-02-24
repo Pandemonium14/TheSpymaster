@@ -1,10 +1,18 @@
 [
   {
-    "PROPER_NAME": "TODO",
+    "PROPER_NAME": "Scout X",
     "NAMES": [
-      "todo",
-      "todos"
+      "scout",
+      "Scout"
     ],
-    "DESCRIPTION": "TODO: Make your own epic keywords"
+    "DESCRIPTION": "Look at X cards from your draw pile. Choose one to add to your hand."
+  },
+  {
+    "PROPER_NAME": "Rig",
+    "NAMES": [
+      "rig",
+      "Rig"
+    ],
+    "DESCRIPTION": "Rigged cards trigger an effect the next time they are drawn or added to your hand by #yScouting."
   }
 ]

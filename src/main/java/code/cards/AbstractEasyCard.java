@@ -1,6 +1,9 @@
 package code.cards;
 
+import basemod.abstracts.AbstractCardModifier;
 import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
+import code.cardmods.rigs.AbstractRig;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -228,5 +231,12 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     public void onSeenByScouting() {}
     public void onScouted() {}
-    public void triggerRigs() {}
+
+    public void triggerRigs() {
+        for (AbstractCardModifier mod : CardModifierManager.modifiers(this)) {
+            if (mod instanceof AbstractRig) {
+                ((AbstractRig) mod).trigger(this);
+            }
+        }
+    }
 }

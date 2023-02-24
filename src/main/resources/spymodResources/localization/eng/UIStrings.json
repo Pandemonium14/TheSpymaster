@@ -1,0 +1,5 @@
+{
+  "${ModID}:BombRig" : {
+    "TEXT" : ["Planted Bomb","When drawn or #yScouted, deal damage to ALL enemies and remove this."]
+  }
+}

@@ -1,4 +1,4 @@
-package code.cards.cardvars;
+package code.cards.protemplatestuff.cardvars;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -6,39 +6,39 @@ import code.cards.AbstractEasyCard;
 
 import static code.SpyMod.makeID;
 
-public class SecondDamage extends DynamicVariable {
+public class SecondMagicNumber extends DynamicVariable {
 
     @Override
     public String key() {
-        return makeID("sd");
+        return makeID("m2");
     }
 
     @Override
     public boolean isModified(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).isSecondDamageModified;
+            return ((AbstractEasyCard) card).isSecondMagicModified;
         }
         return false;
-    }
-
-    public void setIsModified(AbstractCard card, boolean v) {
-        if (card instanceof AbstractEasyCard) {
-            ((AbstractEasyCard) card).isSecondDamageModified = v;
-        }
     }
 
     @Override
     public int value(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).secondDamage;
+            return ((AbstractEasyCard) card).secondMagic;
         }
         return -1;
+    }
+
+    public void setIsModified(AbstractCard card, boolean v) {
+        if (card instanceof AbstractEasyCard) {
+            ((AbstractEasyCard) card).isSecondMagicModified = v;
+        }
     }
 
     @Override
     public int baseValue(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).baseSecondDamage;
+            return ((AbstractEasyCard) card).baseSecondMagic;
         }
         return -1;
     }
@@ -46,7 +46,7 @@ public class SecondDamage extends DynamicVariable {
     @Override
     public boolean upgraded(AbstractCard card) {
         if (card instanceof AbstractEasyCard) {
-            return ((AbstractEasyCard) card).upgradedSecondDamage;
+            return ((AbstractEasyCard) card).upgradedSecondMagic;
         }
         return false;
     }

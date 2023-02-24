@@ -1,4 +1,4 @@
-package code.cards.democards.complex;
+package code.cards.protemplatestuff.democards.complex;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import code.actions.EasyModalChoiceAction;
 import code.cards.AbstractEasyCard;
-import code.cards.EasyModalChoiceCard;
+import code.cards.protemplatestuff.EasyModalChoiceCard;
 
 import java.util.ArrayList;
 
